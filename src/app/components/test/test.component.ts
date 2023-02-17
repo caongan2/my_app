@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class TestComponent {
   title = 'Your site'
+  onSave() {
+    alert("on click successfully")
+  }
+
 }
