@@ -1,2 +1,6 @@
-<p>login works!</p>
-<a routerLink="">Logout</a>
+<app-child [data]="value" (dataEvent)="receiveData($event)"></app-child>
+<!--<p>parent: </p><input type="text" name="value" [(ngModel)]="value">-->
+<p> You entered </p>
+<button (click)="clearValue()">Clear</button>
+<p>Received data: {{ name }}</p>
+<h1>{{age}}</h1>

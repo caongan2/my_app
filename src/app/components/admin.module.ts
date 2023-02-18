@@ -1,9 +1,10 @@
 import {RouterModule, Routes} from "@angular/router";
 import {TestComponent} from "./test/test.component";
-import * as path from "path";
 import {RegisterComponent} from "./register/register.component";
-import {LoginComponent} from "./login/login.component";
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import { ChildComponent } from './login/child/child.component';
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
@@ -24,13 +25,13 @@ const routes: Routes = [
   declarations: [
     TestComponent,
     RegisterComponent,
-    LoginComponent
   ],
   exports: [
 
   ],
-  imports: [
-    [RouterModule.forChild(routes)]
-  ]
+    imports: [
+        [RouterModule.forChild(routes)],
+        FormsModule
+    ]
 })
 export class AdminModule {}
