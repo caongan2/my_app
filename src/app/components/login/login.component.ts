@@ -10,15 +10,7 @@ export class LoginComponent {
 
   data = new Data()
   array = []
-  array2 = [
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-  ]
+  array2 = [1,2,3,55,6]
   constructor(private services: HeroService) {
     this.services.getHeroData().subscribe(data => {
       // @ts-ignore
@@ -41,8 +33,12 @@ export class LoginComponent {
      // @ts-ignore
      // console.log(this.data)
      // @ts-ignore
+     // console.log(typeof this.data.a)
      this.array.push(this.data)
-     console.log(this.array)
+     // for (let item of this.array) {
+     //
+     //   console.log(item['a'])
+     // }
    }
 }
 
@@ -50,6 +46,4 @@ export class Data {
   a: any
   b: any
   c: any
-  d: any
-  e: any
 }

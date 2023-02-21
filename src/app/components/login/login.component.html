@@ -6,6 +6,27 @@
 <p>Received data: {{ name }}</p>
 <h1>{{data.a}}</h1>
 <h1>dsdsdsd</h1>
-<div *ngFor="let item of array2">
-  <a href="">{{item.a}}</a>
-</div>
+<table>
+  <tr>
+    <td>a</td>
+    <td>b</td>
+    <td>c</td>
+  </tr>
+  <tr>
+    <td>{{data.a}}</td>
+    <td>{{data.b}}</td>
+    <td>{{data.c}}</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>a</td>
+    <td>b</td>
+    <td>c</td>
+  </tr>
+  <tr *ngFor="let item of array">
+    <td>{{ item['a'] }}</td>
+    <td>{{ item['b'] }}</td>
+    <td>{{ item['c'] }}</td>
+  </tr>
+</table>
