@@ -1,6 +1,11 @@
 <app-child [data]="value" (dataEvent)="receiveData($event)"></app-child>
-<!--<p>parent: </p><input type="text" name="value" [(ngModel)]="value">-->
+<p>parent: </p><input type="text" name="value" [(ngModel)]="value">
 <p> You entered </p>
 <button (click)="clearValue()">Clear</button>
+<button (click)="getData()">get data</button>
 <p>Received data: {{ name }}</p>
-<h1>{{age}}</h1>
+<h1>{{data.a}}</h1>
+<h1>dsdsdsd</h1>
+<div *ngFor="let item of array2">
+  <a href="">{{item.a}}</a>
+</div>

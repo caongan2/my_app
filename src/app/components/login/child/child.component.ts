@@ -12,7 +12,7 @@ export class ChildComponent {
   age = 27
 
   sendData() {
-    this.age++
+    this.age = this.name.length
     const test = {name: this.name, age: this.age}
     console.log(this.name)
     console.log(test);
