@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {ChildComponent} from "./child/child.component";
 import {LoginComponent} from "./login.component";
-import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgForOf, NgIf} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -10,11 +10,12 @@ import {NgForOf} from "@angular/common";
     ChildComponent
   ],
   exports: [
-    // LoginComponent
   ],
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    ReactiveFormsModule,
+    NgIf
   ]
 })
 export class LoginModule {

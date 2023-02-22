@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {HeroService} from "../../hero.service";
+import {AuthService} from "../../services/auth.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,29 +13,40 @@ export class LoginComponent {
   hidden: boolean = true
   data: undefined
   array = []
-  array2 = [
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-    {a:1, b:2},
-  ]
-  list: number[] = [1, 2, 3, 4, 5];
-  constructor(private services: HeroService) {
+  formLogin ?: FormGroup
+  constructor(
+    private services: HeroService,
+    private authServices: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
     this.services.getHeroData().subscribe(data => {
       console.log(data);
       // @ts-ignore
       this.data = data['data']
-      console.log(this.data);
     })
   }
+
+  ngOnInit(): void {
+    this.formLogin = this.formBuilder.group({
+      email: [''],
+      password: [''],
+    });
+  }
+
+  onSubmit() {
+    let data = this.formLogin?.value;
+    this.authServices.login(data).subscribe(res => {
+      localStorage.setItem('token', JSON.stringify(res.access_token));
+      localStorage.setItem('userLogin', JSON.stringify(res.user));
+      console.log(localStorage.getItem('userLogin'));
+    });
+  }
+
   value="";
   clearValue() {
     this.value="";
     this.array = []
-    console.log(this.list);
   }
   name: string | undefined
   age: number | undefined
@@ -47,21 +61,11 @@ export class LoginComponent {
       console.log(data);
       // @ts-ignore
       this.data = data['data']
-      console.log(this.data);
     })
-     // @ts-ignore
-     // console.log(this.data)
-     // @ts-ignore
-     // this.array.push(this.data)
-     // console.log(this.array)
    }
    fontSize = 17
 
-  changeFontSize(size: any) {
-    // console.log(size);
-    this.fontSize = size
-   }
-    data_delete: undefined
+  data_delete: undefined
    deleteUser(id: number) {
     return this.services.deleteUser(id).subscribe(res => {
       // @ts-ignore
@@ -73,7 +77,6 @@ export class LoginComponent {
           this.data.splice(item)
         }
       }
-      console.log(this.data_delete)
     })
    }
 
