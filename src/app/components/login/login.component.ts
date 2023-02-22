@@ -19,6 +19,7 @@ export class LoginComponent {
     {a:1, b:2},
     {a:1, b:2},
   ]
+  list: number[] = [1, 2, 3, 4, 5];
   constructor(private services: HeroService) {
     this.services.getHeroData().subscribe(data => {
       // @ts-ignore
@@ -28,6 +29,8 @@ export class LoginComponent {
   value="";
   clearValue() {
     this.value="";
+    this.array = []
+    console.log(this.list);
   }
   name: string | undefined
   age: number | undefined
@@ -43,6 +46,12 @@ export class LoginComponent {
      // @ts-ignore
      this.array.push(this.data)
      console.log(this.array)
+   }
+   fontSize = 17
+
+  changeFontSize(size: any) {
+    console.log(size);
+    this.fontSize = size
    }
 }
 

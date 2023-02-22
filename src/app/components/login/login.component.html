@@ -5,7 +5,28 @@
 <button (click)="getData()">get data</button>
 <p>Received data: {{ name }}</p>
 <h1>{{data.a}}</h1>
-<h1>dsdsdsd</h1>
-<div *ngFor="let item of array2">
-  <a href="">{{item.a}}</a>
+<h2>Font size editor</h2>
+
+<div>
+  <label>Enter font size (px):</label>
+  <input type="range" min="9" max="72" value="18" [(ngModel)]="fontSize"> <span>{{fontSize}}</span>
 </div>
+
+<p class="output" [style.fontSize.px]="fontSize">
+  This is a paragraph.
+</p>
+<table>
+  <tr>
+    <td>a</td>
+    <td>b</td>
+    <td>c</td>
+    <td>d</td>
+  </tr>
+  <tr *ngFor="let item of array">
+    <td>{{item['a']}}</td>
+    <td>{{item['b']}}</td>
+    <td>{{item['c']}}</td>
+    <td>{{item['d']}}</td>
+  </tr>
+</table>
+
