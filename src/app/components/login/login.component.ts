@@ -7,8 +7,8 @@ import {HeroService} from "../../hero.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  data = new Data()
+  hidden: boolean = true
+  data: undefined
   array = []
   array2 = [
     {a:1, b:2},
@@ -22,8 +22,10 @@ export class LoginComponent {
   list: number[] = [1, 2, 3, 4, 5];
   constructor(private services: HeroService) {
     this.services.getHeroData().subscribe(data => {
+      console.log(data);
       // @ts-ignore
-      this.data = data
+      this.data = data['data']
+      console.log(this.data);
     })
   }
   value="";
@@ -41,11 +43,17 @@ export class LoginComponent {
   }
 
    getData() {
+    return this.services.getHeroData().subscribe(data => {
+      console.log(data);
+      // @ts-ignore
+      this.data = data['data']
+      console.log(this.data);
+    })
      // @ts-ignore
      // console.log(this.data)
      // @ts-ignore
-     this.array.push(this.data)
-     console.log(this.array)
+     // this.array.push(this.data)
+     // console.log(this.array)
    }
    fontSize = 17
 
@@ -53,6 +61,25 @@ export class LoginComponent {
     // console.log(size);
     this.fontSize = size
    }
+    data_delete: undefined
+   deleteUser(id: number) {
+    return this.services.deleteUser(id).subscribe(res => {
+      // @ts-ignore
+      this.data_delete = res['id']
+      // @ts-ignore
+      for (let item of this.data) {
+        if (item.id == this.data_delete) {
+          // @ts-ignore
+          this.data.splice(item)
+        }
+      }
+      console.log(this.data_delete)
+    })
+   }
+
+  showHiddenText() {
+    this.hidden = !this.hidden
+  }
 }
 
 export class Data {
