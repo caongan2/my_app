@@ -50,7 +50,7 @@ export class LoginComponent {
    fontSize = 17
 
   changeFontSize(size: any) {
-    console.log(size);
+    // console.log(size);
     this.fontSize = size
    }
 }
