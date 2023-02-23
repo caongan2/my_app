@@ -2,7 +2,7 @@
 <p>parent: </p><input type="text" name="value" [(ngModel)]="value">
 <p> You entered </p>
 <button (click)="clearValue()">Clear</button>
-<!--<button (click)="getData()">get data</button>-->
+<button (click)="getData()">get data</button>
 <p>Received data: {{ name }}</p>
 <!--<h1>{{data.a}}</h1>-->
 <h2>Font size editor</h2>
@@ -33,10 +33,10 @@
       <button (click)="deleteUser(item.id)">delete</button></td>
   </tr>
 </table>
-<form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="we-form">
-  <input type="text" placeholder="Email" formControlName="email">
-  <input type="password" placeholder="Password" formControlName="password">
-  <input type="checkbox"><label>remember me</label>
-  <button type="submit" data-ripple="">sign in</button>
-  <a class="forgot underline" href="#" title="">forgot password?</a>
+
+<form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="email">
+  <input type="text" formControlName="password">
+  <button type="submit">submit</button>
+  <button type="button" (click)="logout()">logout</button>
 </form>
